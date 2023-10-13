@@ -181,13 +181,97 @@
           {
             "name": "workbook1",
             "type": "Microsoft.Common.Section",
-            "label": "Cisco ISE",
+            "label": "Advanced KQL for Microsoft Sentinel",
             "elements": [
               {
                 "name": "workbook1-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Sets the time name for analysis"
+                  "text": "Improve your KQL proficiency by using a use-case driven approach."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook2",
+            "type": "Microsoft.Common.Section",
+            "label": "Azure AD Audit logs",
+            "elements": [
+              {
+                "name": "workbook2-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Gain insights into Azure Active Directory by connecting Microsoft Sentinel and using the audit logs to gather insights around Azure AD scenarios."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook3",
+            "type": "Microsoft.Common.Section",
+            "label": "Azure AD Sign-in logs",
+            "elements": [
+              {
+                "name": "workbook3-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Gain insights into Azure Active Directory by connecting Microsoft Sentinel and using the sign-in logs to gather insights around Azure AD scenarios."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook4",
+            "type": "Microsoft.Common.Section",
+            "label": "Azure Activity",
+            "elements": [
+              {
+                "name": "workbook4-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Gain extensive insight into your organization's Azure Activity by analyzing, and correlating all user operations and events."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook5",
+            "type": "Microsoft.Common.Section",
+            "label": "Intro to KQL",
+            "elements": [
+              {
+                "name": "workbook5-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Learn and practice the Kusto Query Language."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook6",
+            "type": "Microsoft.Common.Section",
+            "label": "NISTSP80053workbook",
+            "elements": [
+              {
+                "name": "workbook6-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This Solution enables Compliance Teams, Architects, SecOps Analysts, and Consultants to gain situational awareness for cloud workload security posture."
+                   }
+              }
+            ]
+          },
+          {
+            "name": "workbook7",
+            "type": "Microsoft.Common.Section",
+            "label": "SOC Process Framework",
+            "elements": [
+              {
+                "name": "workbook7-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This workbook contains years of SOC Best Practices and is intended to help SOCs mature and leverage industry standards in Operationalizing their SOC in using Microsoft Sentinel."
                 }
               }
             ]
