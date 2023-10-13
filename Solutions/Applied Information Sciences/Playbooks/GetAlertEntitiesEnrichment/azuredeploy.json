@@ -1,0 +1,613 @@
+{
+    "properties": {
+        "provisioningState": "Succeeded",
+        "createdTime": "2023-10-05T16:05:23.2373546Z",
+        "changedTime": "2023-10-05T16:12:57.9217257Z",
+        "state": "Enabled",
+        "version": "08585050845075701604",
+        "accessEndpoint": "https://prod-15.eastus.logic.azure.com:443/workflows/7850424962634e528701fdd68580f591",
+        "definition": {
+            "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "$connections": {
+                    "defaultValue": {},
+                    "type": "Object"
+                },
+                "UserEnrichmentLogicApp": {
+                    "defaultValue": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/resourceGroups/SOC_Accelerator/providers/Microsoft.Logic/workflows/UserEnrichment",
+                    "type": "String"
+                }
+            },
+            "triggers": {
+                "Microsoft_Sentinel_incident": {
+                    "type": "ApiConnectionWebhook",
+                    "inputs": {
+                        "body": {
+                            "callback_url": "@{listCallbackUrl()}"
+                        },
+                        "host": {
+                            "connection": {
+                                "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+                            }
+                        },
+                        "path": "/subscribe"
+                    }
+                }
+            },
+            "actions": {
+                "Initialize_comments": {
+                    "runAfter": {},
+                    "type": "InitializeVariable",
+                    "inputs": {
+                        "variables": [
+                            {
+                                "name": "comments",
+                                "type": "array"
+                            }
+                        ]
+                    }
+                },
+                "Post_comments": {
+                    "actions": {
+                        "Post_all_comments": {
+                            "foreach": "@variables('comments')",
+                            "actions": {
+                                "Add_account_comment_to_incident": {
+                                    "runAfter": {},
+                                    "type": "ApiConnection",
+                                    "inputs": {
+                                        "body": {
+                                            "Value": "@{items('Post_all_comments')}"
+                                        },
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+                                            }
+                                        },
+                                        "method": "put",
+                                        "path": "/Comment/@{encodeURIComponent(triggerBody()?['WorkspaceSubscriptionId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceId'])}/@{encodeURIComponent(triggerBody()?['WorkspaceResourceGroup'])}/@{encodeURIComponent('Alert')}/@{encodeURIComponent(triggerBody()?['SystemAlertId'])}"
+                                    }
+                                }
+                            },
+                            "runAfter": {},
+                            "type": "Foreach"
+                        }
+                    },
+                    "runAfter": {
+                        "Users_enrichment": [
+                            "Succeeded"
+                        ]
+                    },
+                    "type": "Scope"
+                },
+                "Users_enrichment": {
+                    "actions": {
+                        "For_each_user": {
+                            "foreach": "@body('Get_accounts')?['Accounts']",
+                            "actions": {
+                                "AAD_Devices_table": {
+                                    "runAfter": {
+                                        "MDATP_devices_table": [
+                                            "Succeeded",
+                                            "Failed"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['devices']?['aadDevices']"
+                                    }
+                                },
+                                "Admin_roles_table": {
+                                    "runAfter": {
+                                        "Locations_table": [
+                                            "Succeeded",
+                                            "Failed"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "columns": [
+                                            {
+                                                "header": "Name",
+                                                "value": "@item()?['displayName']"
+                                            },
+                                            {
+                                                "header": "Description",
+                                                "value": "@item()?['description']"
+                                            },
+                                            {
+                                                "header": "Built-in",
+                                                "value": "@item()?['isBuiltIn']"
+                                            },
+                                            {
+                                                "header": "Enabled",
+                                                "value": "@item()?['isEnabled']"
+                                            }
+                                        ],
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['adminRoles']"
+                                    }
+                                },
+                                "Append_to_comments_part1": {
+                                    "runAfter": {
+                                        "Compose_comments_part1": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part1')"
+                                    }
+                                },
+                                "Append_to_comments_part2": {
+                                    "runAfter": {
+                                        "Compose_comments_part2": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part2')"
+                                    }
+                                },
+                                "Append_to_comments_part3": {
+                                    "runAfter": {
+                                        "Compose_comments_part3": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part3')"
+                                    }
+                                },
+                                "Append_to_comments_part4": {
+                                    "runAfter": {
+                                        "Compose_comments_part4": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part4')"
+                                    }
+                                },
+                                "Append_to_comments_part5": {
+                                    "runAfter": {
+                                        "Compose_comments_part5": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part5')"
+                                    }
+                                },
+                                "Append_to_comments_part6": {
+                                    "runAfter": {
+                                        "Compose_comments_part6": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "AppendToArrayVariable",
+                                    "inputs": {
+                                        "name": "comments",
+                                        "value": "@outputs('Compose_comments_part6')"
+                                    }
+                                },
+                                "Call_UserEnrichment_LogicApp": {
+                                    "runAfter": {
+                                        "Compose_username": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Workflow",
+                                    "inputs": {
+                                        "body": {
+                                            "userPrincipalName": "@{outputs('Compose_username')}"
+                                        },
+                                        "host": {
+                                            "triggerName": "manual",
+                                            "workflow": {
+                                                "id": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/resourceGroups/SOC_Accelerator/providers/Microsoft.Logic/workflows/UserEnrichment"
+                                            }
+                                        }
+                                    },
+                                    "description": "Calls the logic app in charge or enriching user details with AAD information"
+                                },
+                                "Compose_comments_part1": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>User Location details</h2><table style=\"width:75%\"><tr><th>Company:</th><td>@{body('Call_UserEnrichment_LogicApp')?['companyName']}</td></tr><tr><th>Job Title:</th><td>@{body('Call_UserEnrichment_LogicApp')?['jobTitle']}</td></tr><tr><th>Department:</th><td>@{body('Call_UserEnrichment_LogicApp')?['department']}</td></tr><tr><th>Country:</th><td>@{body('Call_UserEnrichment_LogicApp')?['country']}</td></tr><tr><th>City:</th><td>@{body('Call_UserEnrichment_LogicApp')?['city']}</td></tr><tr><th>Office Location:</th><td>@{body('Call_UserEnrichment_LogicApp')?['officeLocation']}</td></tr><tr><th>Street Address:</th><td>@{body('Call_UserEnrichment_LogicApp')?['streetAddress']}</td></tr><tr><th>Postal Code:</th><td>@{body('Call_UserEnrichment_LogicApp')?['postalCode']}</td></tr><tr><th>Preffered Language:</th><td>@{body('Call_UserEnrichment_LogicApp')?['preferredLanguage']}</td></tr><tr><th>Business Phone:</th><td>@{body('Call_UserEnrichment_LogicApp')?['businessPhones']}</td></tr><tr><th>Mobile Phone:</th><td>@{body('Call_UserEnrichment_LogicApp')?['mobilePhone']}</td></tr>"
+                                },
+                                "Compose_comments_part2": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>User details</h2><table style=\"width:75%\"><tr><th>UserPrincipalName:</th><td>@{body('Call_UserEnrichment_LogicApp')?['userPrincipalName']}</td></tr><tr><th>Display Name:</th><td>@{body('Call_UserEnrichment_LogicApp')?['displayName']}</td></tr><tr><th>Employee Id:</th><td>@{body('Call_UserEnrichment_LogicApp')?['employeeId']}</td></tr><tr><th>Manager:</th><td>@{body('Call_UserEnrichment_LogicApp')?['manager']}</td></tr><tr><th>User id:</th><td> @{body('Call_UserEnrichment_LogicApp')?['id']}</td></tr><tr><th>Admin roles:</th><td>@{body('Admin_roles_table')}</td></tr><th>Mfa Registered:</th><td>@{body('Call_UserEnrichment_LogicApp')?['isMfaRegistered']}</td></tr><tr><th>Registered Mfa Methods:</th><td> @{body('Call_UserEnrichment_LogicApp')?['authMethodsMfa']}</td></tr><tr><th>Sspr Registered:</th><td> @{body('Call_UserEnrichment_LogicApp')?['isSsprRegistered']}</td></tr>"
+                                },
+                                "Compose_comments_part3": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>Additional details</h2><table style=\"width:75%\"><tr><th>Locations usage:</th><td>@{body('Locations_table')}</td></tr><tr><th>MCAS Threat Score:</th><td>@{body('Call_UserEnrichment_LogicApp')?['threatScore']}</td></tr><tr><th>Threat Score History:</th><td>@{body('Threatscore_History_table')}</td></tr><tr><th>AAD Risk Level:</th><td>@{body('Call_UserEnrichment_LogicApp')?['riskLevel']}</td></tr><tr><th>AAD Risk State:</th><td>@{body('Call_UserEnrichment_LogicApp')?['riskState']}</td></tr><tr><th>AAD Risk Details:</th><td>@{body('Call_UserEnrichment_LogicApp')?['riskDetail']}</td></tr><tr><th>AAD Risk Last Update:</th><td>@{body('Call_UserEnrichment_LogicApp')?['riskLastUpdatedDateTime']}</td></tr><tr><th>Self-Service Password Reset Activities:</th><td>@{body('Call_UserEnrichment_LogicApp')?['ssprActivities']}</td></tr>"
+                                },
+                                "Compose_comments_part4": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>Mailbox and Devices details</h2><table style=\"width:75%\"><tr><th>Mail:</th><td>@{body('Call_UserEnrichment_LogicApp')?['mail']}</td></tr><tr><th>Out-Of-Office is enabled:</th><td>@{body('Call_UserEnrichment_LogicApp')?['mailboxOofEnabled']}</td></tr><tr><th>Out-Of-Office Message:</th><td>@{createArray(body('Call_UserEnrichment_LogicApp')?['mailboxOofMessage'])}</td></tr><tr><th>Mailbox Inbox Rules:</th><td>@{replace(body('Inbox_rules_table'), '&quot;', '\"')}</td></tr>"
+                                },
+                                "Compose_comments_part5": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>Account details</h2><table style=\"width:75%\"><tr><th>Account is Enabled:</th><td>@{body('Call_UserEnrichment_LogicApp')?['accountEnabled']}</td></tr><tr><th>Creation Time:</th><td>@{body('Call_UserEnrichment_LogicApp')?['createdDateTime']}</td></tr><tr><th>On-Premises DN:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesDistinguishedName']}</td></tr><tr><th>On-Premises Domain Name:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesDomainName']}</td></tr><tr><th>On-Premises Last DirSync:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesLastSyncDateTime']}</td></tr><tr><th>On-Premises SamAccountName:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesSamAccountName']}</td></tr><tr><th>On-Premises SID:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesSecurityIdentifier']}</td></tr><tr><th>On-Premises SyncEnabled:</th><td>@{body('Call_UserEnrichment_LogicApp')?['onPremisesSyncEnabled']}</td></tr><tr><th>Refresh Token Valid From:</th><td>@{body('Call_UserEnrichment_LogicApp')?['refreshTokensValidFromDateTime']}}</td></tr>"
+                                },
+                                "Compose_comments_part6": {
+                                    "runAfter": {
+                                        "AAD_Devices_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Compose",
+                                    "inputs": "<h2>Devices details</h2><table style=\"width:75%\"><tr><th>Azure AD Devices:</th><td>@{replace(body('AAD_Devices_table'), '&quot;', '\"')}</td></tr><tr><th>MDATP Devices:</th><td>@{replace(body('MDATP_Devices_table'), '&quot;', '\"')}</td></tr>"
+                                },
+                                "Compose_username": {
+                                    "runAfter": {},
+                                    "type": "Compose",
+                                    "inputs": "@if(empty(items('For_each_user')?['AadUserId']), concat(items('For_each_user')?['Name'], '@', items('For_each_user')?['UPNSuffix']), items('For_each_user')?['AadUserId'])",
+                                    "description": "If AAD object ID is missing, building UPN"
+                                },
+                                "Inbox_rules_table": {
+                                    "runAfter": {
+                                        "Manager_table": [
+                                            "Succeeded",
+                                            "Failed"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "columns": [
+                                            {
+                                                "header": "Sequence",
+                                                "value": "@item()?['sequence']"
+                                            },
+                                            {
+                                                "header": "Name",
+                                                "value": "@item()?['displayName']"
+                                            },
+                                            {
+                                                "header": "Enabled",
+                                                "value": "@item()?['isEnabled']"
+                                            },
+                                            {
+                                                "header": "Conditions",
+                                                "value": "@item()?['conditions']"
+                                            },
+                                            {
+                                                "header": "Actions",
+                                                "value": "@item()?['actions']"
+                                            }
+                                        ],
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['mailboxInboxRules']"
+                                    }
+                                },
+                                "Locations_table": {
+                                    "runAfter": {
+                                        "Threatscore_History_table": [
+                                            "Succeeded",
+                                            "Failed"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "columns": [
+                                            {
+                                                "header": "Country",
+                                                "value": "@item()?['country']"
+                                            },
+                                            {
+                                                "header": "UsagePercentage",
+                                                "value": "@item()?['percentageTotalActivities']"
+                                            },
+                                            {
+                                                "header": "LastActivity",
+                                                "value": "@item()?['lastActivity']"
+                                            },
+                                            {
+                                                "header": "ActivitiesLast30Days",
+                                                "value": "@item()?['activities']"
+                                            }
+                                        ],
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['locationsUsage']"
+                                    }
+                                },
+                                "MDATP_devices_table": {
+                                    "runAfter": {
+                                        "Inbox_rules_table": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['devices']?['mdatpDevices']"
+                                    }
+                                },
+                                "Manager_table": {
+                                    "runAfter": {
+                                        "Admin_roles_table": [
+                                            "Succeeded",
+                                            "Failed"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "columns": [
+                                            {
+                                                "header": "DisplayName",
+                                                "value": "@item()?['displayName']"
+                                            },
+                                            {
+                                                "header": "UserPrincipalName",
+                                                "value": "@item()?['userPrincipalName']"
+                                            },
+                                            {
+                                                "header": "Mail",
+                                                "value": "@item()?['mail']"
+                                            },
+                                            {
+                                                "header": "JobTitle",
+                                                "value": "@item()?['jobTitle']"
+                                            },
+                                            {
+                                                "header": "MobilePhone",
+                                                "value": "@item()?['mobilePhone']"
+                                            }
+                                        ],
+                                        "format": "HTML",
+                                        "from": "@createArray(body('Call_UserEnrichment_LogicApp')?['manager'])"
+                                    }
+                                },
+                                "Send_Data_to_Sentinel": {
+                                    "runAfter": {
+                                        "Call_UserEnrichment_LogicApp": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "ApiConnection",
+                                    "inputs": {
+                                        "body": "@{body('Call_UserEnrichment_LogicApp')}",
+                                        "headers": {
+                                            "Log-Type": "Users"
+                                        },
+                                        "host": {
+                                            "connection": {
+                                                "name": "@parameters('$connections')['azureloganalyticsdatacollector']['connectionId']"
+                                            }
+                                        },
+                                        "method": "post",
+                                        "path": "/api/logs"
+                                    }
+                                },
+                                "Threatscore_History_table": {
+                                    "runAfter": {
+                                        "Call_UserEnrichment_LogicApp": [
+                                            "Succeeded"
+                                        ]
+                                    },
+                                    "type": "Table",
+                                    "inputs": {
+                                        "columns": [
+                                            {
+                                                "header": "Date",
+                                                "value": "@item()?['date']"
+                                            },
+                                            {
+                                                "header": "Score",
+                                                "value": "@item()?['score']"
+                                            },
+                                            {
+                                                "header": "ScoreHigherThanXPercent",
+                                                "value": "@item()?['percentile']"
+                                            }
+                                        ],
+                                        "format": "HTML",
+                                        "from": "@body('Call_UserEnrichment_LogicApp')?['threatScoreHistory']?['body']"
+                                    }
+                                }
+                            },
+                            "runAfter": {
+                                "Get_accounts": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Foreach"
+                        },
+                        "Get_accounts": {
+                            "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": "@triggerBody()?['Entities']",
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/entities/account"
+                            }
+                        }
+                    },
+                    "runAfter": {
+                        "Initialize_comments": [
+                            "Succeeded"
+                        ]
+                    },
+                    "type": "Scope"
+                }
+            },
+            "outputs": {}
+        },
+        "parameters": {
+            "$connections": {
+                "value": {
+                    "azureloganalyticsdatacollector": {
+                        "connectionId": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/resourceGroups/SOC_Accelerator/providers/Microsoft.Web/connections/azureloganalyticsdatacollector",
+                        "connectionName": "azureloganalyticsdatacollector",
+                        "id": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/providers/Microsoft.Web/locations/eastus/managedApis/azureloganalyticsdatacollector"
+                    },
+                    "azuresentinel": {
+                        "connectionId": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/resourceGroups/SOC_Accelerator/providers/Microsoft.Web/connections/azuresentinel",
+                        "connectionName": "azuresentinel",
+                        "id": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/providers/Microsoft.Web/locations/eastus/managedApis/azuresentinel"
+                    }
+                }
+            }
+        },
+        "endpointsConfiguration": {
+            "workflow": {
+                "outgoingIpAddresses": [
+                    {
+                        "address": "13.92.98.111"
+                    },
+                    {
+                        "address": "40.121.91.41"
+                    },
+                    {
+                        "address": "40.114.82.191"
+                    },
+                    {
+                        "address": "23.101.139.153"
+                    },
+                    {
+                        "address": "23.100.29.190"
+                    },
+                    {
+                        "address": "23.101.136.201"
+                    },
+                    {
+                        "address": "104.45.153.81"
+                    },
+                    {
+                        "address": "23.101.132.208"
+                    },
+                    {
+                        "address": "52.226.216.197"
+                    },
+                    {
+                        "address": "52.226.216.187"
+                    },
+                    {
+                        "address": "40.76.151.25"
+                    },
+                    {
+                        "address": "40.76.148.50"
+                    },
+                    {
+                        "address": "20.84.29.29"
+                    },
+                    {
+                        "address": "20.84.29.18"
+                    },
+                    {
+                        "address": "40.76.174.83"
+                    },
+                    {
+                        "address": "40.76.174.39"
+                    }
+                ],
+                "accessEndpointIpAddresses": [
+                    {
+                        "address": "137.135.106.54"
+                    },
+                    {
+                        "address": "40.117.99.79"
+                    },
+                    {
+                        "address": "40.117.100.228"
+                    },
+                    {
+                        "address": "137.116.126.165"
+                    },
+                    {
+                        "address": "52.226.216.209"
+                    },
+                    {
+                        "address": "40.76.151.124"
+                    },
+                    {
+                        "address": "20.84.29.150"
+                    },
+                    {
+                        "address": "40.76.174.148"
+                    }
+                ]
+            },
+            "connector": {
+                "outgoingIpAddresses": [
+                    {
+                        "address": "40.71.249.139"
+                    },
+                    {
+                        "address": "40.71.249.205"
+                    },
+                    {
+                        "address": "40.114.40.132"
+                    },
+                    {
+                        "address": "40.71.11.80/28"
+                    },
+                    {
+                        "address": "40.71.15.160/27"
+                    },
+                    {
+                        "address": "52.188.157.160"
+                    },
+                    {
+                        "address": "20.88.153.176/28"
+                    },
+                    {
+                        "address": "20.88.153.192/27"
+                    },
+                    {
+                        "address": "52.151.221.184"
+                    },
+                    {
+                        "address": "52.151.221.119"
+                    }
+                ]
+            }
+        }
+    },
+    "id": "/subscriptions/238fdc81-d80d-4922-a829-67e5567d4530/resourceGroups/SOC_Accelerator/providers/Microsoft.Logic/workflows/GetAlertEntitiesEnrichment",
+    "name": "GetAlertEntitiesEnrichment",
+    "type": "Microsoft.Logic/workflows",
+    "location": "eastus"
+}
