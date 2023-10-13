@@ -1,0 +1,20 @@
+{
+    "publisherId": "azuresentinel",
+    "offerId": "azure-sentinel-solution-ciscoise",
+    "firstPublishDate": "2023-10-11",
+    "providers": [
+        "Applied Information Sciences"
+    ],
+    "categories": {
+        "domains": [
+            "Security - Network",
+            "Security - Automation (SOAR)"
+        ]
+    },
+    "support": {
+        "name": "Microsoft Corporation",
+        "email": "support@microsoft.com",
+        "tier": "Microsoft",
+        "link": "https://support.microsoft.com"
+    }
+}
