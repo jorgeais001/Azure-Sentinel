@@ -471,6 +471,146 @@
           {
             "name": "huntingquery1",
             "type": "Microsoft.Common.Section",
+            "label": "Anomalous AAD Account Creation",
+            "elements": [
+              {
+                "name": "huntingquery1-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query generates an output of all the users performing user creation where one or more features of the activity deviate from the user, their peers, or the tenant profile."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery2",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomalous Activity Role Assignment",
+            "elements": [
+              {
+                "name": "huntingquery2-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query generates an output of all users performing an "action" operation regarding an access elevation, where one or more features of the activity deviate from the user, their peers or the tenant profile."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery3",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomalous Geo Location Logon",
+            "elements": [
+              {
+                "name": "huntingquery3-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query generates an output of a successful sign-in performed by a user from a new geolocation he has never connected to before and none of their peers as well."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery4",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomalous Login to Devices",
+            "elements": [
+              {
+                "name": "huntingquery4-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query generates an output of all administrator users performing an interactive logon (4624:2) where one or more features of the activity deviate from the user, their peers, or the tenant profile."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery5",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomalous Password Reset",
+            "elements": [
+              {
+                "name": "huntingquery5-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query generates an output of all users performing Reset User Password where one or more features of the activity deviate from the user, their peers, or the tenant profile."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery6",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomalous RDP Activity",
+            "elements": [
+              {
+                "name": "huntingquery6-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Adversaries may use valid accounts to log into a computer using the Remote Desktop Protocol (RDP)."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery7",
+            "type": "Microsoft.Common.Section",
+            "label": "CiscoISE - Guest authentication succeeded",
+            "elements": [
+              {
+                "name": "huntingquery7-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Search for successful Guest authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery8",
+            "type": "Microsoft.Common.Section",
+            "label": "CiscoISE - Rare or new useragent",
+            "elements": [
+              {
+                "name": "huntingquery8-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Search for rare useragent values. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery9",
+            "type": "Microsoft.Common.Section",
+            "label": "CiscoISE - Sources with high number of 'Failed Authentication' events",
+            "elements": [
+              {
+                "name": "huntingquery9-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Search sources with high number of Failed Authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery10",
+            "type": "Microsoft.Common.Section",
+            "label": "CiscoISE - Attempts to suspend the log collector",
+            "elements": [
+              {
+                "name": "huntingquery10-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Search for attempts to suspend the log collector. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+               }
+            }
+            ]
+          },
+          {
+            "name": "huntingquery1",
+            "type": "Microsoft.Common.Section",
             "label": "CiscoISE - Authentication attempts to suspended user account",
             "elements": [
               {
