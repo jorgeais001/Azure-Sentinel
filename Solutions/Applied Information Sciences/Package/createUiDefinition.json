@@ -555,13 +555,13 @@
           {
             "name": "huntingquery7",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Guest authentication succeeded",
+            "label": "Anomalous Sign-in Activity",
             "elements": [
               {
                 "name": "huntingquery7-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Search for successful Guest authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                  "text": "The query generates an output of successful sign-in"
                 }
               }
             ]
@@ -569,13 +569,13 @@
           {
             "name": "huntingquery8",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Rare or new useragent",
+            "label": "Anomalous Azure Operation Hunting Model",
             "elements": [
               {
                 "name": "huntingquery8-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Search for rare useragent values. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                  "text": "This query can be used during threat hunts to identify a range of different Azure Operation anomalies."
                 }
               }
             ]
@@ -583,167 +583,153 @@
           {
             "name": "huntingquery9",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Sources with high number of 'Failed Authentication' events",
+            "label": "Azure Network Security Group NSG Administrative Operations",
             "elements": [
               {
                 "name": "huntingquery9-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Search sources with high number of Failed Authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery10",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Attempts to suspend the log collector",
-            "elements": [
-              {
-                "name": "huntingquery10-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for attempts to suspend the log collector. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                  "text": "Identifies a set of Azure NSG administrative and operational detection queries for hunting activities."
                }
             }
             ]
           },
           {
-            "name": "huntingquery1",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Authentication attempts to suspended user account",
-            "elements": [
-              {
-                "name": "huntingquery1-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search authentication attempts to suspended user account. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery2",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Dynamic authorization failed",
-            "elements": [
-              {
-                "name": "huntingquery2-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for dynamic authorization failed events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery3",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Expired certificate in the client certificates chain",
-            "elements": [
-              {
-                "name": "huntingquery3-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for expired certificates in the client certificates chain. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery4",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Failed authentication events",
-            "elements": [
-              {
-                "name": "huntingquery4-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for failed authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery5",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Failed login attempts via SSH CLI (users)",
-            "elements": [
-              {
-                "name": "huntingquery5-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for Failed login attempts via SSH CLI users. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery6",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Guest authentication failed",
-            "elements": [
-              {
-                "name": "huntingquery6-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search Guest authentication failed events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery7",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Guest authentication succeeded",
-            "elements": [
-              {
-                "name": "huntingquery7-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for successful Guest authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery8",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Rare or new useragent",
-            "elements": [
-              {
-                "name": "huntingquery8-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search for rare useragent values. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
-            "name": "huntingquery9",
-            "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Sources with high number of 'Failed Authentication' events",
-            "elements": [
-              {
-                "name": "huntingquery9-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Search sources with high number of Failed Authentication events. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
-                }
-              }
-            ]
-          },
-          {
             "name": "huntingquery10",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Attempts to suspend the log collector",
+            "label": "Crash dump disabled on host",
             "elements": [
               {
                 "name": "huntingquery10-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Search for attempts to suspend the log collector. This hunting query depends on CiscoISE data connector (Syslog Parser or Table)"
+                  "text": "This detection looks the prevention of crash dumps being created. This can be used to limit reporting by malware, look for suspicious processes setting this registry key."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery11",
+            "type": "Microsoft.Common.Section",
+            "label": "Creation of an anomalous number of resources",
+            "elements": [
+              {
+                "name": "huntingquery11-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Looks for anomalous number of resources creation or deployment activities in azure activity log."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery12",
+            "type": "Microsoft.Common.Section",
+            "label": "Multiple users email forwarded to same destination",
+            "elements": [
+              {
+                "name": "huntingquery12-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when multiple (more than one) users mailboxes are configured to forward to the same destination."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery13",
+            "type": "Microsoft.Common.Section",
+            "label": "Potential Microsoft Security Services Tampering",
+            "elements": [
+              {
+                "name": "huntingquery13-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query identifies potential tampering related to Microsoft security related products and services."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery14",
+            "type": "Microsoft.Common.Section",
+            "label": "Webshell Detection",
+            "elements": [
+              {
+                "name": "huntingquery14-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query can detect web shells using GET requests by searching for keywords in URL strings."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery15",
+            "type": "Microsoft.Common.Section",
+            "label": "Rare Processes Run by Service Accounts",
+            "elements": [
+              {
+                "name": "huntingquery15-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query collects a list of service account and then joins them with rare processes in an environment to detect anomalous behaviours."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery16",
+            "type": "Microsoft.Common.Section",
+            "label": "Rare process running on a Linux host",
+            "elements": [
+              {
+                "name": "huntingquery16-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Looks for rare processes that are running on Linux hosts."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery17",
+            "type": "Microsoft.Common.Section",
+            "label": "Rare Custom Script Extension",
+            "elements": [
+              {
+                "name": "huntingquery17-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query tries to identify rare custom script extensions that have been executed in your environment"
+                }
+              }
+            ]
+          },
+          {
+                "name": "huntingquery18",
+            "type": "Microsoft.Common.Section",
+            "label": "Suspicious Sign-ins to Privileged Account",
+            "elements": [
+              {
+                "name": "huntingquery18-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query searches for any Sign-ins from non-compliant device/device registered without MFA(Multi-factor Authentication)/unknown device to privileged account using pre-built watchlist to identify accounts."
+                }
+              }
+            ]
+          },
+          {
+            "name": "huntingquery19",
+            "type": "Microsoft.Common.Section",
+            "label": "Masquerading files",
+            "elements": [
+              {
+                "name": "huntingquery19-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The query also filters out the legitimate locations from which svchost.exe is launched."
                 }
               }
             ]
