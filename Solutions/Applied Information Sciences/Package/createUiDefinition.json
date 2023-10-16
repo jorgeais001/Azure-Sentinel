@@ -491,7 +491,7 @@
                 "name": "huntingquery2-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "The query generates an output of all users performing an "action" operation regarding an access elevation, where one or more features of the activity deviate from the user, their peers or the tenant profile."
+                  "text": "The query generates an output of all users performing an action operation regarding an access elevation, where one or more features of the activity deviate from the user, their peers or the tenant profile."
                 }
               }
             ]
