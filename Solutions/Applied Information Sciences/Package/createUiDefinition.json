@@ -307,13 +307,13 @@
           {
             "name": "analytic1",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - ISE administrator password has been reset",
+            "label": "AD FS Remote Auth Sync Connection",
             "elements": [
               {
                 "name": "analytic1-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when the ISE administrator password has been reset."
+                  "text": "This detection uses Security events from the AD FS Auditing provider to detect suspicious authentication events on an AD FS server."
                 }
               }
             ]
@@ -321,13 +321,13 @@
           {
             "name": "analytic2",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Attempt to delete local store logs",
+            "label": "Account Created and Deleted in Short Timeframe",
             "elements": [
               {
                 "name": "analytic2-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when attempt to delete local store logs failed."
+                  "text": "Look for accounts created and then deleted in under 24 hours."
                 }
               }
             ]
@@ -335,13 +335,13 @@
           {
             "name": "analytic3",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Backup failed",
+            "label": "Linked Malicious Storage Artifacts",
             "elements": [
               {
                 "name": "analytic3-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when backup activity failed."
+                  "text": "This query identifies the additional files uploaded by the same IP address which triggered a malware alert for malicious content upload on Azure Blob or File Storage Container."
                 }
               }
             ]
@@ -349,13 +349,13 @@
           {
             "name": "analytic4",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Certificate has expired",
+            "label": "Anomaly found in Network Session Traffic",
             "elements": [
               {
                 "name": "analytic4-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects certificate expiration."
+                  "text": "The rule identifies anomalous pattern in network session traffic based on previously seen data, different Device Action, Network Protocol, Network Direction or overall volume."
                 }
               }
             ]
@@ -363,13 +363,13 @@
           {
             "name": "analytic5",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE -  Command executed with the highest privileges from new IP",
+            "label": "Authentication Methods Changed for Privileged Account",
             "elements": [
               {
                 "name": "analytic5-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects command execution with PrivilegeLevel - 15 from new source."
+                  "text": "Identifies authentication methods being changed for a privileged account."
                 }
               }
             ]
@@ -377,13 +377,13 @@
           {
             "name": "analytic6",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Command executed with the highest privileges by new user",
+            "label": "Abnormal Deny Rate for Source IP",
             "elements": [
               {
                 "name": "analytic6-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects command execution with PrivilegeLevel - 15 by user for wich there was no such activity detected earlier."
+                  "text": "Identifies abnormal deny rate for specific source IP to destination IP based on the normal average and standard deviation learned during a configured period."
                 }
               }
             ]
@@ -391,13 +391,13 @@
           {
             "name": "analytic7",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Device changed IP in last 24 hours",
+            "label": "Abnormal Port to Protocol",
             "elements": [
               {
                 "name": "analytic7-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when device changes IP address in last 24 hours."
+                  "text": "Identifies communication for well known protocol over a non-standard port based on learning period activity."
                 }
               }
             ]
@@ -405,7 +405,7 @@
           {
             "name": "analytic8",
             "type": "Microsoft.Common.Section",
-            "label": "CiscoISE - Device PostureStatus changed to non-compliant",
+            "label": "Multiple Sources Affected by the Same TI Destination",
             "elements": [
               {
                 "name": "analytic8-text",
