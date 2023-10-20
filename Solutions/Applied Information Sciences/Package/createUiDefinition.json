@@ -613,124 +613,124 @@
             ]
           },
           {
-            "name": "analytic5",
+            "name": "analytic23",
             "type": "Microsoft.Common.Section",
-            "label": "Authentication Methods Changed for Privileged Account",
+            "label": "Suspicious application consent similar to O365 Attack Toolkit",
             "elements": [
               {
-                "name": "analytic5-text",
+                "name": "analytic23-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies authentication methods being changed for a privileged account."
+                  "text": "This will alert when a user consents to provide a previously-unknown Azure application with the same OAuth permissions used by the MDSec O365 Attack Toolkit."
                 }
               }
             ]
           },
           {
-            "name": "analytic6",
+            "name": "analytic24",
             "type": "Microsoft.Common.Section",
-            "label": "Abnormal Deny Rate for Source IP",
+            "label": "Multiple admin membership removals from newly created admin.",
             "elements": [
               {
-                "name": "analytic6-text",
+                "name": "analytic24-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies abnormal deny rate for specific source IP to destination IP based on the normal average and standard deviation learned during a configured period."
+                  "text": "This query detects when newly created Global admin removes multiple existing global admins which can be an attempt by adversaries to lock down organization and retain sole access."
                 }
               }
             ]
           },
           {
-            "name": "analytic7",
+            "name": "analytic25",
             "type": "Microsoft.Common.Section",
-            "label": "Abnormal Port to Protocol",
+            "label": "SecurityEvent - Multiple authentication failures followed by a success",
             "elements": [
               {
-                "name": "analytic7-text",
+                "name": "analytic25-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies communication for well known protocol over a non-standard port based on learning period activity."
+                  "text": "Identifies accounts who have failed to logon to the domain multiple times in a row, followed by a successful authentication within a short time frame. "
                 }
               }
             ]
           },
           {
-            "name": "analytic8",
+            "name": "analytic26",
             "type": "Microsoft.Common.Section",
-            "label": "Multiple Sources Affected by the Same TI Destination",
+            "label": "NRT Modified domain federation trust settings",
             "elements": [
               {
-                "name": "analytic8-text",
+                "name": "analytic26-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when device changes PostureStatus from \"Compliant\"."
+                  "text": "This will alert when a user or application modifies the federation settings on the domain or Update domain authentication from Managed to Federated."
                 }
               }
             ]
           },
           {
-            "name": "analytic9",
+            "name": "analytic27",
             "type": "Microsoft.Common.Section",
-            "label": "Azure Active Directory PowerShell accessing non-AAD resources",
+            "label": "New access credential added to Application or Service Principal",
             "elements": [
               {
-                "name": "analytic9-text",
+                "name": "analytic27-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when a user or application signs in using Azure Active Directory PowerShell to access non-Active Directory resources."
+                  "text": "This will alert when an admin or app owner account adds a new credential to an Application or Service Principal where a verify KeyCredential was already present for the app."
                }
               }
             ]
           },
           {
-            "name": "analytic10",
+            "name": "analytic28",
             "type": "Microsoft.Common.Section",
-            "label": "Brute force attack against a Cloud PC",
+            "label": "NRT Security Event log cleared",
             "elements": [
               {
-                "name": "analytic10-text",
+                "name": "analytic28-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies evidence of brute force activity against a Windows 365 Cloud PC."
+                  "text": "Checks for event id 1102 which indicates the security event log was cleared."
                 }
               }
             ]
           },
           {
-            "name": "analytic2",
+            "name": "analytic29",
             "type": "Microsoft.Common.Section",
-            "label": "Account Created and Deleted in Short Timeframe",
+            "label": "NRT Base64 Encoded Windows Process Command-lines",
             "elements": [
               {
-                "name": "analytic2-text",
+                "name": "analytic29-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Look for accounts created and then deleted in under 24 hours."
+                  "text": "This detection identifies instances of a base64 encoded PE file header seen in the process command line parameter."
                 }
               }
             ]
           },
           {
-            "name": "analytic3",
+            "name": "analytic30",
             "type": "Microsoft.Common.Section",
-            "label": "Linked Malicious Storage Artifacts",
+            "label": "NRT Process executed from binary hidden in Base64 encoded file",
             "elements": [
               {
-                "name": "analytic3-text",
+                "name": "analytic30-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This query identifies the additional files uploaded by the same IP address which triggered a malware alert for malicious content upload on Azure Blob or File Storage Container."
+                  "text": "Encoding malicious software is a technique used to obfuscate files from detection."
                 }
               }
             ]
           },
           {
-            "name": "analytic4",
+            "name": "analytic31",
             "type": "Microsoft.Common.Section",
             "label": "Anomaly found in Network Session Traffic",
             "elements": [
               {
-                "name": "analytic4-text",
+                "name": "analytic31-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
                   "text": "The rule identifies anomalous pattern in network session traffic based on previously seen data, different Device Action, Network Protocol, Network Direction or overall volume."
