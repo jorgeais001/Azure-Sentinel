@@ -727,41 +727,41 @@
           {
             "name": "analytic31",
             "type": "Microsoft.Common.Section",
-            "label": "Anomaly found in Network Session Traffic",
+            "label": "Network endpoint to host executable correlation",
             "elements": [
               {
                 "name": "analytic31-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "The rule identifies anomalous pattern in network session traffic based on previously seen data, different Device Action, Network Protocol, Network Direction or overall volume."
+                  "text": Correlates blocked URLs hosting [malicious] executables with host endpoint data to identify potential instances of executables of the same name having been recently run."
                 }
               }
             ]
           },
           {
-            "name": "analytic5",
+            "name": "analytic32",
             "type": "Microsoft.Common.Section",
-            "label": "Authentication Methods Changed for Privileged Account",
+            "label": "New EXE deployed via Default Domain or Default Domain Controller Policies",
             "elements": [
               {
-                "name": "analytic5-text",
+                "name": "analytic32-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies authentication methods being changed for a privileged account."
+                  "text": "This detection highlights executables deployed to hosts via either the Default Domain or Default Domain Controller Policies."
                 }
               }
             ]
           },
           {
-            "name": "analytic6",
+            "name": "analytic33",
             "type": "Microsoft.Common.Section",
-            "label": "Abnormal Deny Rate for Source IP",
+            "label": "New External User Granted Admin Role",
             "elements": [
               {
-                "name": "analytic6-text",
+                "name": "analytic33-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies abnormal deny rate for specific source IP to destination IP based on the normal average and standard deviation learned during a configured period."
+                  "text": "This query will detect instances where a newly invited external user is granted an administrative role."
                 }
               }
             ]
