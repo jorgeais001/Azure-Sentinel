@@ -767,6 +767,160 @@
             ]
           },
           {
+            "name": "analytic34",
+            "type": "Microsoft.Common.Section",
+            "label": "Suspicious Resource deployment",
+            "elements": [
+              {
+                "name": "analytic34-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when a rare Resource and ResourceGroup deployment occurs by a previously unseen caller."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic35",
+            "type": "Microsoft.Common.Section",
+            "label": "New UserAgent observed in last 24 hours",
+            "elements": [
+              {
+                "name": "analytic35-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies new UserAgents observed in the last 24 hours versus the previous 14 days."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic36",
+            "type": "Microsoft.Common.Section",
+            "label": "Non Domain Controller Active Directory Replication",
+            "elements": [
+              {
+                "name": "analytic36-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query detects potential attempts by non-computer accounts to retrieve/synchronize an active directory object leveraging directory replication services."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic37",
+            "type": "Microsoft.Common.Section",
+            "label": "New executable via Office FileUploaded Operation",
+            "elements": [
+              {
+                "name": "analytic37-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when executable file types are uploaded to Office services such as SharePoint and OneDrive."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic38",
+            "type": "Microsoft.Common.Section",
+            "label": "Port scan detected",
+            "elements": [
+              {
+                "name": "analytic38-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic39",
+            "type": "Microsoft.Common.Section",
+            "label": "Possible AiTM Phishing Attempt Against Azure AD",
+            "elements": [
+              {
+                "name": "analytic39-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Threat actors may attempt to phish users in order to hijack a users sign-in session, and skip the authentication process even if the user had enabled multifactor authentication by stealing and replaying stolen credentials and session cookies."
+                 }
+              }
+            ]
+          },
+          {
+            "name": "analytic40",
+            "type": "Microsoft.Common.Section",
+            "label": "Potential beaconing activity",
+            "elements": [
+              {
+                "name": "analyti402-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies beaconing patterns from Network traffic logs based on recurrent frequency patterns."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic3",
+            "type": "Microsoft.Common.Section",
+            "label": "Linked Malicious Storage Artifacts",
+            "elements": [
+              {
+                "name": "analytic3-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query identifies the additional files uploaded by the same IP address which triggered a malware alert for malicious content upload on Azure Blob or File Storage Container."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic4",
+            "type": "Microsoft.Common.Section",
+            "label": "Anomaly found in Network Session Traffic",
+            "elements": [
+              {
+                "name": "analytic4-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The rule identifies anomalous pattern in network session traffic based on previously seen data, different Device Action, Network Protocol, Network Direction or overall volume."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic5",
+            "type": "Microsoft.Common.Section",
+            "label": "Authentication Methods Changed for Privileged Account",
+            "elements": [
+              {
+                "name": "analytic5-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies authentication methods being changed for a privileged account."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic6",
+            "type": "Microsoft.Common.Section",
+            "label": "Abnormal Deny Rate for Source IP",
+            "elements": [
+              {
+                "name": "analytic6-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies abnormal deny rate for specific source IP to destination IP based on the normal average and standard deviation learned during a configured period."
+                }
+              }
+            ]
+          },
+          {
             "name": "analytic7",
             "type": "Microsoft.Common.Section",
             "label": "Abnormal Port to Protocol",
@@ -818,20 +972,440 @@
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
                   "text": "Identifies evidence of brute force activity against a Windows 365 Cloud PC."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic11",
+            "type": "Microsoft.Common.Section",
+            "label": "Correlate Unfamiliar sign-in properties & atypical travel alerts",
+            "elements": [
+              {
+                "name": "analytic11-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "The combination of an Unfamiliar sign-in properties alert and an Atypical travel alert about the same user."
                 }
               }
             ]
           },
           {
-            "name": "analytic10",
+            "name": "analytic12",
             "type": "Microsoft.Common.Section",
-            "label": "Brute force attack against a Cloud PC",
+            "label": "Credential added after admin consented to Application",
             "elements": [
               {
-                "name": "analytic10-text",
+                "name": "analytic12-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies evidence of brute force activity against a Windows 365 Cloud PC."
+                  "text": "Identify instances where Service Principal credentials were added to an application by one user after the application was granted admin consent rights."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic13",
+            "type": "Microsoft.Common.Section",
+            "label": "Detect port misuse by static threshold",
+            "elements": [
+              {
+                "name": "analytic13-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This detection rule detects port usage above the configured threshold."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic14",
+            "type": "Microsoft.Common.Section",
+            "label": "Distributed Password cracking attempts in AzureAD",
+            "elements": [
+              {
+                "name": "analytic14-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies distributed password cracking attempts from the Azure Active Directory SigninLogs."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic15",
+            "type": "Microsoft.Common.Section",
+            "label": "Dumping LSASS Process Into a File",
+            "elements": [
+              {
+                "name": "analytic15-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Adversaries may attempt to access credential material stored in the process memory of the Local Security Authority Subsystem Service."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic16",
+            "type": "Microsoft.Common.Section",
+            "label": "Excessive number of failed connections from a single source",
+            "elements": [
+              {
+                "name": "analytic16-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a single source that generates an excessive amount of failed connections."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic17",
+            "type": "Microsoft.Common.Section",
+            "label": "Failed login attempts to Azure Portal",
+            "elements": [
+              {
+                "name": "analytic17-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies failed login attempts in the Azure Active Directory SigninLogs to the Azure Portal."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic18",
+            "type": "Microsoft.Common.Section",
+            "label": "Gain Code Execution on ADFS Server via SMB + Remote Service or Scheduled Task",
+            "elements": [
+              {
+                "name": "analytic18-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query detects instances where an attacker has gained the ability to execute code on an ADFS Server through SMB and Remote Service or Scheduled Task."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic19",
+            "type": "Microsoft.Common.Section",
+            "label": "Lateral Movement via DCOM",
+            "elements": [
+              {
+                "name": "analytic19-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query detects a fairly uncommon attack technique using the Windows Distributed Component Object Model"
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic20",
+            "type": "Microsoft.Common.Section",
+            "label": "Explicit MFA Deny",
+            "elements": [
+              {
+                "name": "analytic20-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "User explicitly denies MFA push."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic21",
+            "type": "Microsoft.Common.Section",
+            "label": "Exchange workflow MailItemsAccessed operation anomaly",
+            "elements": [
+              {
+                "name": "analytic21-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies anomalous increases in Exchange mail items accessed operations."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic22",
+            "type": "Microsoft.Common.Section",
+            "label": "Mail redirect via ExO transport rule",
+            "elements": [
+              {
+                "name": "analytic22-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when Exchange Online transport rule configured to forward emails."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic23",
+            "type": "Microsoft.Common.Section",
+            "label": "Suspicious application consent similar to O365 Attack Toolkit",
+            "elements": [
+              {
+                "name": "analytic23-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This will alert when a user consents to provide a previously-unknown Azure application with the same OAuth permissions used by the MDSec O365 Attack Toolkit."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic24",
+            "type": "Microsoft.Common.Section",
+            "label": "Multiple admin membership removals from newly created admin.",
+            "elements": [
+              {
+                "name": "analytic24-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query detects when newly created Global admin removes multiple existing global admins which can be an attempt by adversaries to lock down organization and retain sole access."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic25",
+            "type": "Microsoft.Common.Section",
+            "label": "SecurityEvent - Multiple authentication failures followed by a success",
+            "elements": [
+              {
+                "name": "analytic25-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies accounts who have failed to logon to the domain multiple times in a row, followed by a successful authentication within a short time frame. "
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic26",
+            "type": "Microsoft.Common.Section",
+            "label": "NRT Modified domain federation trust settings",
+            "elements": [
+              {
+                "name": "analytic26-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This will alert when a user or application modifies the federation settings on the domain or Update domain authentication from Managed to Federated."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic27",
+            "type": "Microsoft.Common.Section",
+            "label": "New access credential added to Application or Service Principal",
+            "elements": [
+              {
+                "name": "analytic27-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This will alert when an admin or app owner account adds a new credential to an Application or Service Principal where a verify KeyCredential was already present for the app."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic28",
+            "type": "Microsoft.Common.Section",
+            "label": "NRT Security Event log cleared",
+            "elements": [
+              {
+                "name": "analytic28-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Checks for event id 1102 which indicates the security event log was cleared."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic29",
+            "type": "Microsoft.Common.Section",
+            "label": "NRT Base64 Encoded Windows Process Command-lines",
+            "elements": [
+              {
+                "name": "analytic29-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This detection identifies instances of a base64 encoded PE file header seen in the process command line parameter."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic30",
+            "type": "Microsoft.Common.Section",
+            "label": "NRT Process executed from binary hidden in Base64 encoded file",
+            "elements": [
+              {
+                "name": "analytic30-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Encoding malicious software is a technique used to obfuscate files from detection."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic31",
+            "type": "Microsoft.Common.Section",
+            "label": "Network endpoint to host executable correlation",
+            "elements": [
+              {
+                "name": "analytic31-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": Correlates blocked URLs hosting [malicious] executables with host endpoint data to identify potential instances of executables of the same name having been recently run."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic32",
+            "type": "Microsoft.Common.Section",
+            "label": "New EXE deployed via Default Domain or Default Domain Controller Policies",
+            "elements": [
+              {
+                "name": "analytic32-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This detection highlights executables deployed to hosts via either the Default Domain or Default Domain Controller Policies."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic33",
+            "type": "Microsoft.Common.Section",
+            "label": "New External User Granted Admin Role",
+            "elements": [
+              {
+                "name": "analytic33-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query will detect instances where a newly invited external user is granted an administrative role."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic34",
+            "type": "Microsoft.Common.Section",
+            "label": "Suspicious Resource deployment",
+            "elements": [
+              {
+                "name": "analytic34-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when a rare Resource and ResourceGroup deployment occurs by a previously unseen caller."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic35",
+            "type": "Microsoft.Common.Section",
+            "label": "New UserAgent observed in last 24 hours",
+            "elements": [
+              {
+                "name": "analytic35-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies new UserAgents observed in the last 24 hours versus the previous 14 days."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic36",
+            "type": "Microsoft.Common.Section",
+            "label": "Non Domain Controller Active Directory Replication",
+            "elements": [
+              {
+                "name": "analytic36-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This query detects potential attempts by non-computer accounts to retrieve/synchronize an active directory object leveraging directory replication services."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic37",
+            "type": "Microsoft.Common.Section",
+            "label": "New executable via Office FileUploaded Operation",
+            "elements": [
+              {
+                "name": "analytic37-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when executable file types are uploaded to Office services such as SharePoint and OneDrive."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic38",
+            "type": "Microsoft.Common.Section",
+            "label": "Port scan detected",
+            "elements": [
+              {
+                "name": "analytic38-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic38",
+            "type": "Microsoft.Common.Section",
+            "label": "Port scan detected",
+            "elements": [
+              {
+                "name": "analytic38-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic38",
+            "type": "Microsoft.Common.Section",
+            "label": "Port scan detected",
+            "elements": [
+              {
+                "name": "analytic38-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
+               }
+              }
+            ]
+          },
+          {
+            "name": "analytic38",
+            "type": "Microsoft.Common.Section",
+            "label": "Port scan detected",
+            "elements": [
+              {
+                "name": "analytic38-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
                 }
               }
             ]
