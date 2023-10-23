@@ -921,222 +921,194 @@
             ]
           },
           {
-            "name": "analytic7",
+            "name": "analytic45",
             "type": "Microsoft.Common.Section",
-            "label": "Abnormal Port to Protocol",
+            "label": "Rare subscription-level operations in Azure",
             "elements": [
               {
-                "name": "analytic7-text",
+                "name": "analytic45-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies communication for well known protocol over a non-standard port based on learning period activity."
+                  "text": "This query looks for a few sensitive subscription-level events based on Azure Activity Logs."
                 }
               }
             ]
           },
           {
-            "name": "analytic8",
+            "name": "analytic46",
             "type": "Microsoft.Common.Section",
-            "label": "Multiple Sources Affected by the Same TI Destination",
+            "label": "Registry Persistence via AppCert DLL Modification",
             "elements": [
               {
-                "name": "analytic8-text",
+                "name": "analytic46-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Detects when device changes PostureStatus from \"Compliant\"."
+                  "text": "Adversaries may establish persistence and/or elevate privileges by executing malicious content triggered by AppCert DLLs loaded into processes."
                 }
               }
             ]
           },
           {
-            "name": "analytic9",
+            "name": "analytic47",
             "type": "Microsoft.Common.Section",
-            "label": "Azure Active Directory PowerShell accessing non-AAD resources",
+            "label": "Registry Persistence via AppInit DLLs Modification",
             "elements": [
               {
-                "name": "analytic9-text",
+                "name": "analytic47-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when a user or application signs in using Azure Active Directory PowerShell to access non-Active Directory resources."
+                  "text": "Adversaries may establish persistence and/or elevate privileges by executing malicious content triggered by AppInit DLLs loaded into processes."
                }
               }
             ]
           },
           {
-            "name": "analytic10",
+            "name": "analytic48",
             "type": "Microsoft.Common.Section",
-            "label": "Brute force attack against a Cloud PC",
+            "label": "Scheduled Task Hide",
             "elements": [
               {
-                "name": "analytic10-text",
+                "name": "analytic48-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies evidence of brute force activity against a Windows 365 Cloud PC."
+                  "text": "This query detects attempts by malware to hide the scheduled task by deleting the SD (Security Descriptor) value."
                }
               }
             ]
           },
           {
-            "name": "analytic11",
+            "name": "analytic49",
             "type": "Microsoft.Common.Section",
-            "label": "Correlate Unfamiliar sign-in properties & atypical travel alerts",
+            "label": "Security Event log cleared",
             "elements": [
               {
-                "name": "analytic11-text",
+                "name": "analytic49-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "The combination of an Unfamiliar sign-in properties alert and an Atypical travel alert about the same user."
+                  "text": "Checks for event id 1102 which indicates the security event log was cleared."
                 }
               }
             ]
           },
           {
-            "name": "analytic12",
+            "name": "analytic50",
             "type": "Microsoft.Common.Section",
-            "label": "Credential added after admin consented to Application",
+            "label": "SharePointFileOperation via previously unseen IPs",
             "elements": [
               {
-                "name": "analytic12-text",
+                "name": "analytic50-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identify instances where Service Principal credentials were added to an application by one user after the application was granted admin consent rights."
+                  "text": "Identifies anomalies using user behavior by setting a threshold for significant changes in file upload/download activities from new IP addresses."
                 }
               }
             ]
           },
           {
-            "name": "analytic13",
+            "name": "analytic51",
             "type": "Microsoft.Common.Section",
-            "label": "Detect port misuse by static threshold",
+            "label": "SharePointFileOperation via devices with previously unseen user agents",
             "elements": [
               {
-                "name": "analytic13-text",
+                "name": "analytic51-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This detection rule detects port usage above the configured threshold."
+                  "text": "Identifies if the number of documents uploaded or downloaded from device associated with a previously unseen user agent exceeds a threshold."
                 }
               }
             ]
           },
           {
-            "name": "analytic14",
+            "name": "analytic52",
             "type": "Microsoft.Common.Section",
-            "label": "Distributed Password cracking attempts in AzureAD",
+            "label": "GitHub Signin Burst from Multiple Locations",
             "elements": [
               {
-                "name": "analytic14-text",
+                "name": "analytic52-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies distributed password cracking attempts from the Azure Active Directory SigninLogs."
+                  "text": "This detection triggers when there is a Signin burst from multiple locations in GitHub."
                 }
               }
             ]
           },
           {
-            "name": "analytic15",
+            "name": "analytic53",
             "type": "Microsoft.Common.Section",
-            "label": "Dumping LSASS Process Into a File",
+            "label": "Brute force attack against Azure Portal",
             "elements": [
               {
-                "name": "analytic15-text",
+                "name": "analytic53-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Adversaries may attempt to access credential material stored in the process memory of the Local Security Authority Subsystem Service."
+                  "text": "Detects Azure Portal brute force attacks by monitoring for multiple authentication failures and a successful login within a 20-minute window."
                 }
               }
             ]
           },
           {
-            "name": "analytic16",
+            "name": "analytic54",
             "type": "Microsoft.Common.Section",
-            "label": "Excessive number of failed connections from a single source",
+            "label": "Starting or Stopping HealthService to Avoid Detection",
             "elements": [
               {
-                "name": "analytic16-text",
+                "name": "analytic54-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This rule identifies a single source that generates an excessive amount of failed connections."
+                  "text": "This query detects events where an actor is stopping or starting HealthService to disable telemetry collection/detection from the agent."
                 }
               }
             ]
           },
           {
-            "name": "analytic17",
+            "name": "analytic55",
             "type": "Microsoft.Common.Section",
-            "label": "Failed login attempts to Azure Portal",
+            "label": "Subscription moved to another tenant",
             "elements": [
               {
-                "name": "analytic17-text",
+                "name": "analytic55-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies failed login attempts in the Azure Active Directory SigninLogs to the Azure Portal."
+                  "text": "This detection uses AzureActivity logs (Security category) to identify when a subscription is moved to another tenant."
                 }
               }
             ]
           },
           {
-            "name": "analytic18",
+            "name": "analytic56",
             "type": "Microsoft.Common.Section",
-            "label": "Gain Code Execution on ADFS Server via SMB + Remote Service or Scheduled Task",
+            "label": "Suspicious Service Principal creation activity",
             "elements": [
               {
-                "name": "analytic18-text",
+                "name": "analytic56-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This query detects instances where an attacker has gained the ability to execute code on an ADFS Server through SMB and Remote Service or Scheduled Task."
+                  "text": "This alert will detect creation of an SPN, permissions granted, credentials created, activity and deletion of the SPN in a time frame."
                }
               }
             ]
           },
           {
-            "name": "analytic19",
+            "name": "analytic57",
             "type": "Microsoft.Common.Section",
-            "label": "Lateral Movement via DCOM",
+            "label": "Suspicious Sign In Followed by MFA Modification",
             "elements": [
               {
-                "name": "analytic19-text",
+                "name": "analytic57-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This query detects a fairly uncommon attack technique using the Windows Distributed Component Object Model"
+                  "text": "This query looks uses Microsoft Sentinel's UEBA features to look for suspicious logons followed by modifications to MFA settings by that user."
                 }
               }
             ]
           },
           {
-            "name": "analytic20",
+            "name": "analytic58",
             "type": "Microsoft.Common.Section",
-            "label": "Explicit MFA Deny",
+            "label": "Threat Essentials - Mail redirect via ExO transport rule",
             "elements": [
               {
-                "name": "analytic20-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "User explicitly denies MFA push."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic21",
-            "type": "Microsoft.Common.Section",
-            "label": "Exchange workflow MailItemsAccessed operation anomaly",
-            "elements": [
-              {
-                "name": "analytic21-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Identifies anomalous increases in Exchange mail items accessed operations."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic22",
-            "type": "Microsoft.Common.Section",
-            "label": "Mail redirect via ExO transport rule",
-            "elements": [
-              {
-                "name": "analytic22-text",
+                "name": "analytic58-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
                   "text": "Identifies when Exchange Online transport rule configured to forward emails."
@@ -1145,26 +1117,54 @@
             ]
           },
           {
-            "name": "analytic23",
+            "name": "analytic59",
             "type": "Microsoft.Common.Section",
-            "label": "Suspicious application consent similar to O365 Attack Toolkit",
+            "label": "Threat Essentials - Mass Cloud resource deletions Time Series Anomaly",
             "elements": [
               {
-                "name": "analytic23-text",
+                "name": "analytic59-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when a user consents to provide a previously-unknown Azure application with the same OAuth permissions used by the MDSec O365 Attack Toolkit."
+                  "text": "This query generates baseline pattern of cloud resource deletions by an user and generated anomaly when any unusual spike is detected."
                 }
               }
             ]
           },
           {
-            "name": "analytic24",
+            "name": "analytic60",
+            "type": "Microsoft.Common.Section",
+            "label": "Threat Essentials - User Assigned Privileged Role",
+            "elements": [
+              {
+                "name": "analytic60-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "Identifies when a new privileged role is assigned to a user."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic61",
+            "type": "Microsoft.Common.Section",
+            "label": "Process Execution Frequency Anomaly",
+            "elements": [
+              {
+                "name": "analytic61-text",
+                "type": "Microsoft.Common.TextBlock",
+                "options": {
+                  "text": "This detection identifies anomalous spike in frequency of executions of sensitive processes which are often leveraged as attack vectors."
+                }
+              }
+            ]
+          },
+          {
+            "name": "analytic62",
             "type": "Microsoft.Common.Section",
             "label": "Multiple admin membership removals from newly created admin.",
             "elements": [
               {
-                "name": "analytic24-text",
+                "name": "analytic62-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
                   "text": "This query detects when newly created Global admin removes multiple existing global admins which can be an attempt by adversaries to lock down organization and retain sole access."
