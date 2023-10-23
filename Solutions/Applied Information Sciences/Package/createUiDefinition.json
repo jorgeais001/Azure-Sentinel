@@ -853,69 +853,69 @@
           {
             "name": "analytic40",
             "type": "Microsoft.Common.Section",
-            "label": "Potential beaconing activity",
+            "label": "Potential Build Process Compromise - MDE",
             "elements": [
               {
-                "name": "analyti402-text",
+                "name": "analyti40-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This rule identifies beaconing patterns from Network traffic logs based on recurrent frequency patterns."
+                  "text": "The query looks for source code files being modified immediately after a build process is started."
                 }
               }
             ]
           },
           {
-            "name": "analytic3",
+            "name": "analytic41",
             "type": "Microsoft.Common.Section",
-            "label": "Linked Malicious Storage Artifacts",
+            "label": "Potential Remote Desktop Tunneling",
             "elements": [
               {
-                "name": "analytic3-text",
+                "name": "analytic41-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This query identifies the additional files uploaded by the same IP address which triggered a malware alert for malicious content upload on Azure Blob or File Storage Container."
+                  "text": "This query detects remote desktop authentication attempts with a localhost source address, which can indicate a tunneled login."
                 }
               }
             ]
           },
           {
-            "name": "analytic4",
+            "name": "analytic42",
             "type": "Microsoft.Common.Section",
-            "label": "Anomaly found in Network Session Traffic",
+            "label": "Privileged Accounts - Sign in Failure Spikes",
             "elements": [
               {
-                "name": "analytic4-text",
+                "name": "analytic42-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "The rule identifies anomalous pattern in network session traffic based on previously seen data, different Device Action, Network Protocol, Network Direction or overall volume."
+                  "text": "Identifies spike in failed sign-ins from Privileged accounts."
                 }
               }
             ]
           },
           {
-            "name": "analytic5",
+            "name": "analytic43",
             "type": "Microsoft.Common.Section",
-            "label": "Authentication Methods Changed for Privileged Account",
+            "label": "Rare application consent",
             "elements": [
               {
-                "name": "analytic5-text",
+                "name": "analytic43-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies authentication methods being changed for a privileged account."
+                  "text": "This will alert when the Consent to application operation occurs by a user that has not done this operation before or rarely does this."
                 }
               }
             ]
           },
           {
-            "name": "analytic6",
+            "name": "analytic44",
             "type": "Microsoft.Common.Section",
-            "label": "Abnormal Deny Rate for Source IP",
+            "label": "Rare and potentially high-risk Office operations",
             "elements": [
               {
-                "name": "analytic6-text",
+                "name": "analytic44-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies abnormal deny rate for specific source IP to destination IP based on the normal average and standard deviation learned during a configured period."
+                  "text": "Identifies Office operations that are typically rare and can provide capabilities useful to attackers."
                 }
               }
             ]
