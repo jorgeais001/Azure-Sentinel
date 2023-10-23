@@ -1161,251 +1161,97 @@
           {
             "name": "analytic62",
             "type": "Microsoft.Common.Section",
-            "label": "Multiple admin membership removals from newly created admin.",
+            "label": "Mass Cloud resource deletions Time Series Anomaly.",
             "elements": [
               {
                 "name": "analytic62-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This query detects when newly created Global admin removes multiple existing global admins which can be an attempt by adversaries to lock down organization and retain sole access."
+                  "text": "This query generates the baseline pattern of cloud resource deletions by an individual and generates an anomaly when any unusual spike is detected."
                 }
               }
             ]
           },
           {
-            "name": "analytic25",
+            "name": "analytic63",
             "type": "Microsoft.Common.Section",
-            "label": "SecurityEvent - Multiple authentication failures followed by a success",
+            "label": "WDigest downgrade attack",
             "elements": [
               {
-                "name": "analytic25-text",
+                "name": "analytic63-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Identifies accounts who have failed to logon to the domain multiple times in a row, followed by a successful authentication within a short time frame. "
+                  "text": "When the WDigest Authentication protocol is enabled, plain text passwords are stored in the Local Security Authority Subsystem Service exposing them to theft."
                 }
               }
             ]
           },
           {
-            "name": "analytic26",
+            "name": "analytic64",
             "type": "Microsoft.Common.Section",
-            "label": "NRT Modified domain federation trust settings",
+            "label": "Windows Binaries Executed from Non-Default Directory",
             "elements": [
               {
-                "name": "analytic26-text",
+                "name": "analytic64-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when a user or application modifies the federation settings on the domain or Update domain authentication from Managed to Federated."
+                  "text": "The query detects Windows binaries, that can be executed from a non-default directory."
                 }
               }
             ]
           },
           {
-            "name": "analytic27",
+            "name": "analytic65",
             "type": "Microsoft.Common.Section",
-            "label": "New access credential added to Application or Service Principal",
+            "label": "Windows Binaries Lolbins Renamed",
             "elements": [
               {
-                "name": "analytic27-text",
+                "name": "analytic65-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This will alert when an admin or app owner account adds a new credential to an Application or Service Principal where a verify KeyCredential was already present for the app."
+                  "text": "This query detects the execution of renamed Windows binaries."
                }
               }
             ]
           },
           {
-            "name": "analytic28",
+            "name": "analytic66",
             "type": "Microsoft.Common.Section",
-            "label": "NRT Security Event log cleared",
+            "label": "Base64 encoded Windows process command-lines",
             "elements": [
               {
-                "name": "analytic28-text",
+                "name": "analytic66-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Checks for event id 1102 which indicates the security event log was cleared."
+                  "text": "Identifies instances of a base64-encoded PE file header seen in the process command line parameter."
                 }
               }
             ]
           },
           {
-            "name": "analytic29",
+            "name": "analytic67",
             "type": "Microsoft.Common.Section",
-            "label": "NRT Base64 Encoded Windows Process Command-lines",
+            "label": "Exchange AuditLog disabled",
             "elements": [
               {
-                "name": "analytic29-text",
+                "name": "analytic67-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "This detection identifies instances of a base64 encoded PE file header seen in the process command line parameter."
+                  "text": "Identifies when the exchange audit logging has been disabled which may be an adversary attempt to evade detection or avoid other defenses."
                 }
               }
             ]
           },
           {
-            "name": "analytic30",
+            "name": "analytic68",
             "type": "Microsoft.Common.Section",
-            "label": "NRT Process executed from binary hidden in Base64 encoded file",
+            "label": "Malware in the recycle bin",
             "elements": [
               {
-                "name": "analytic30-text",
+                "name": "analytic68-text",
                 "type": "Microsoft.Common.TextBlock",
                 "options": {
-                  "text": "Encoding malicious software is a technique used to obfuscate files from detection."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic31",
-            "type": "Microsoft.Common.Section",
-            "label": "Network endpoint to host executable correlation",
-            "elements": [
-              {
-                "name": "analytic31-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": Correlates blocked URLs hosting [malicious] executables with host endpoint data to identify potential instances of executables of the same name having been recently run."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic32",
-            "type": "Microsoft.Common.Section",
-            "label": "New EXE deployed via Default Domain or Default Domain Controller Policies",
-            "elements": [
-              {
-                "name": "analytic32-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This detection highlights executables deployed to hosts via either the Default Domain or Default Domain Controller Policies."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic33",
-            "type": "Microsoft.Common.Section",
-            "label": "New External User Granted Admin Role",
-            "elements": [
-              {
-                "name": "analytic33-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This query will detect instances where a newly invited external user is granted an administrative role."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic34",
-            "type": "Microsoft.Common.Section",
-            "label": "Suspicious Resource deployment",
-            "elements": [
-              {
-                "name": "analytic34-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Identifies when a rare Resource and ResourceGroup deployment occurs by a previously unseen caller."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic35",
-            "type": "Microsoft.Common.Section",
-            "label": "New UserAgent observed in last 24 hours",
-            "elements": [
-              {
-                "name": "analytic35-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Identifies new UserAgents observed in the last 24 hours versus the previous 14 days."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic36",
-            "type": "Microsoft.Common.Section",
-            "label": "Non Domain Controller Active Directory Replication",
-            "elements": [
-              {
-                "name": "analytic36-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This query detects potential attempts by non-computer accounts to retrieve/synchronize an active directory object leveraging directory replication services."
-               }
-              }
-            ]
-          },
-          {
-            "name": "analytic37",
-            "type": "Microsoft.Common.Section",
-            "label": "New executable via Office FileUploaded Operation",
-            "elements": [
-              {
-                "name": "analytic37-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "Identifies when executable file types are uploaded to Office services such as SharePoint and OneDrive."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic38",
-            "type": "Microsoft.Common.Section",
-            "label": "Port scan detected",
-            "elements": [
-              {
-                "name": "analytic38-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
-                }
-              }
-            ]
-          },
-          {
-            "name": "analytic38",
-            "type": "Microsoft.Common.Section",
-            "label": "Port scan detected",
-            "elements": [
-              {
-                "name": "analytic38-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
-               }
-              }
-            ]
-          },
-          {
-            "name": "analytic38",
-            "type": "Microsoft.Common.Section",
-            "label": "Port scan detected",
-            "elements": [
-              {
-                "name": "analytic38-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
-               }
-              }
-            ]
-          },
-          {
-            "name": "analytic38",
-            "type": "Microsoft.Common.Section",
-            "label": "Port scan detected",
-            "elements": [
-              {
-                "name": "analytic38-text",
-                "type": "Microsoft.Common.TextBlock",
-                "options": {
-                  "text": "This rule identifies a possible port scan, in which a single source tries to access a large number of different ports is a short time frame."
+                  "text": "The query detects Windows binaries that can be used for executing malware and have been hidden in the recycle bin."
                 }
               }
             ]
